@@ -1,0 +1,4 @@
+tests/**
+roles/**
+*~
+*.retry
