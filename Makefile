@@ -2,7 +2,7 @@
 K3S_URL = https://192.168.100.11:6443
 K3S_TOKEN = K10735fb645c84e6eb1a5b3fa0a273439ef00a7b36bf95e7883fd034f8621faf313::server:b7078e87ce5a278527684026d20a3157
 
-.PHONY: all references check-cmdline setup-cmdline disable-swapfile setup-k3s setup-k3s-master setup-k3s-slave setup-roles
+.PHONY: all references check-cmdline setup-cmdline disable-swapfile setup-k3s-master check-token setup-k3s-slave setup-roles
 
 all:
 	ansible-playbook site.yml
