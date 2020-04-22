@@ -27,7 +27,7 @@ setup-k3s-master:
 	ansible master -b -m systemd -a "enabled=yes state=started name=k3s"
 
 check-token:
-	ansible master -m command -a "cat /etc/systemd/system/k3s.service"
+	ansible master -b -m command -a "cat /var/lib/rancher/k3s/server/node-token"
 
 setup-k3s-slave:
 	ansible slave -b -m shell -a "curl -sfL https://get.k3s.io | K3S_URL=$(K3S_URL) K3S_TOKEN=$(K3S_TOKEN) sh -"
