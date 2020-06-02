@@ -10,11 +10,14 @@ all:
 references:
 	@echo https://qiita.com/Tsu_hao_Zhang/items/7d4f5d62bed584766881
 
+check-cgroups:
+	ansible all -m command -a 'cat /proc/cgroups'
+
 check-cmdline:
-	ansible all -m shell -a 'cat /boot/cmdline.txt'
+	ansible all -m shell -a 'cat /boot/firmware/cmdline.txt'
 
 setup-cmdline:
-	ansible all -b -m replace -a "path=/boot/cmdline.txt regexp='^(.* rootwait)$$' replace='\1 cgroup_memory=1 cgroup_enable=memory cgroup_enable=cpuset'"
+	ansible all -b -m replace -a "path=/boot/firmware/cmdline.txt regexp='^(.* fixrtc)$$' replace='\1 cgroup_memory=1 cgroup_enable=memory'"
 
 check-swapfile:
 	ansible all -b -m command -a 'grep SwapTotal /proc/meminfo'
