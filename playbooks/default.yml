@@ -3,6 +3,10 @@
 - hosts: all
   vars:
     mfts_additional_packages:
-      - emacs25
+      - emacs
+      - openntpd
+    mfts_copy_files:
+      - { src: "{{ inventory_dir }}/files/etc.openntpd.ntpd.conf", dest: "/etc/openntpd/ntpd.conf", owner: "root", group: "root", mode: "0644" }
+      - { src: "{{ inventory_dir }}/files/etc.default.openntpd", dest: "/etc/default/openntpd", owner: "root", group: "root", mode: "0644" }
   roles:
     - YasuhiroABE.myfavorite-setting

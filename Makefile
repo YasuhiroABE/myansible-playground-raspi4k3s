@@ -20,7 +20,7 @@ check-swapfile:
 	ansible all -b -m command -a 'grep SwapTotal /proc/meminfo'
 
 disable-swapfile:
-	ansible all -b -m systemd -a "enabled=no state=stopped name=dphys-swapfile.service"
+	@echo "You don't need to run this task for Ubuntu 20.04 LTS."
 
 setup-k3s-master:
 	ansible master -b -m shell -a "curl -sfL https://get.k3s.io | sh -"
